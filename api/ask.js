@@ -5,39 +5,43 @@ const openai = new OpenAI({
 });
 
 export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    res.status(405).json({ error: 'Method not allowed' });
-    return;
-  }
-
-  const { question } = req.body;
-  if (!question) {
-    res.status(400).json({ error: 'Question is required' });
+  if (req.method !== "POST") {
+    res.status(405).json({ error: "Method not allowed" });
     return;
   }
 
   try {
+    // Parse the body manually if needed
+    const buffers = [];
+    for await (const chunk of req) {
+      buffers.push(chunk);
+    }
+    const data = Buffer.concat(buffers).toString();
+    const body = JSON.parse(data);
+
+    const { question } = body;
+    if (!question) {
+      res.status(400).json({ error: "Question is required" });
+      return;
+    }
+
     const completion = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: [
         {
           role: "system",
-          content: "You are a helpful assistant providing step-by-step tech support for PCs and mobile devices."
+          content: "You are a helpful assistant providing step-by-step tech support for PCs and mobile devices.",
         },
         {
           role: "user",
-          content: question
-        }
+          content: question,
+        },
       ],
     });
 
     res.status(200).json({ answer: completion.choices[0].message.content });
   } catch (error) {
     console.error("OpenAI API error:", error);
-    res.status(500).json({ error: 'OpenAI API error' });
+    res.status(500).json({ error: "OpenAI API error" });
   }
 }
-
-
-
-
