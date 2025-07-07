@@ -1,31 +1,75 @@
+const dropZone = document.getElementById("drop-zone");
 const fileInput = document.getElementById("image");
 const fileName = document.getElementById("file-name");
+const askBtn = document.getElementById("askBtn");
+const questionInput = document.getElementById("question");
+const answerBox = document.getElementById("answer");
+
+// Drop zone events
+dropZone.addEventListener("click", () => {
+  fileInput.click();
+});
+
+dropZone.addEventListener("dragover", (e) => {
+  e.preventDefault();
+  dropZone.classList.add("dragover");
+});
+
+dropZone.addEventListener("dragleave", () => {
+  dropZone.classList.remove("dragover");
+});
+
+dropZone.addEventListener("drop", (e) => {
+  e.preventDefault();
+  dropZone.classList.remove("dragover");
+  const files = e.dataTransfer.files;
+  if (files.length) {
+    fileInput.files = files;
+    fileName.textContent = files[0].name;
+  }
+});
 
 fileInput.addEventListener("change", () => {
-  if (fileInput.files.length > 0) {
+  if (fileInput.files.length) {
     fileName.textContent = fileInput.files[0].name;
   } else {
     fileName.textContent = "No image attached";
   }
 });
 
-document.getElementById("askBtn").addEventListener("click", async () => {
-  const question = document.getElementById("question").value;
-  const file = fileInput.files[0];
-
-  const formData = new FormData();
-  formData.append("question", question);
-  if (file) {
-    formData.append("image", file);
+// Example handler for "Get Help" button
+askBtn.addEventListener("click", async () => {
+  const question = questionInput.value.trim();
+  if (!question) {
+    answerBox.textContent = "Please enter a question.";
+    return;
   }
 
-  document.getElementById("answer").textContent = "Loading...";
+  answerBox.textContent = "Loading...";
 
-  const res = await fetch("/api/ask", {
-    method: "POST",
-    body: formData,
-  });
+  // Here you would include code to handle image sending and question sending to your backend
+  // For example, using fetch to your /api/ask endpoint
 
-  const data = await res.json();
-  document.getElementById("answer").textContent = data.answer;
+  try {
+    const formData = new FormData();
+    formData.append("question", question);
+    if (fileInput.files[0]) {
+      formData.append("image", fileInput.files[0]);
+    }
+
+    const response = await fetch("/api/ask", {
+      method: "POST",
+      body: formData
+    });
+
+    const data = await response.json();
+    if (data.answer) {
+      answerBox.textContent = data.answer;
+    } else {
+      answerBox.textContent = "Sorry, there was an error processing your request.";
+    }
+  } catch (error) {
+    console.error(error);
+    answerBox.textContent = "Error contacting server.";
+  }
 });
