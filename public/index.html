@@ -4,16 +4,26 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Fix My Tech - AI Tech Support</title>
-  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
     <h1>Fix My Tech</h1>
     <p>Describe your tech issue below and get instant AI help.</p>
+
     <textarea id="question" placeholder="E.g. My laptop won't turn on"></textarea>
+
+    <div class="file-upload">
+      <label for="image">Attach image (drag and drop)</label>
+      <input type="file" id="image" accept="image/*" />
+      <span id="file-name">No image attached</span>
+      <p class="note">Attach an image or screenshot (video not supported yet)</p>
+    </div>
+
     <button id="askBtn">Get Help</button>
     <pre id="answer"></pre>
   </div>
-  <script src="/script.js"></script>
+
+  <script src="script.js"></script>
 </body>
 </html>
