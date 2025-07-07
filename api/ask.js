@@ -64,7 +64,7 @@ export default async function handler(req, res) {
       ];
 
       const completion = await openai.chat.completions.create({
-        model: "gpt-4o", // If you want Vision, use GPT-4o (or your selected Vision-supported model)
+        model: "gpt-4o", // Use "gpt-4o" or "gpt-4o-mini" if you like
         messages: messages,
       });
 
