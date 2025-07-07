@@ -13,11 +13,11 @@
 
     <textarea id="question" placeholder="E.g. My laptop won't turn on"></textarea>
 
-    <div class="file-upload">
-      <label for="image">Attach image (drag and drop)</label>
-      <input type="file" id="image" accept="image/*" />
-      <span id="file-name">No image attached</span>
+    <div id="drop-zone" class="drop-zone">
+      <p><strong>Attach image (drag and drop)</strong></p>
+      <p id="file-name">No image attached</p>
       <p class="note">Attach an image or screenshot (video not supported yet)</p>
+      <input type="file" id="image" accept="image/*" style="display: none;" />
     </div>
 
     <button id="askBtn">Get Help</button>
