@@ -1,7 +1,7 @@
 body {
   font-family: Arial, sans-serif;
-  background: #0f3a55;
-  color: #333;
+  background: #0f3344; /* Darker background */
+  color: #fff;
   display: flex;
   justify-content: center;
   padding: 2rem;
@@ -12,15 +12,21 @@ body {
 .container {
   max-width: 600px;
   width: 100%;
-  background: #183d5d;
+  background: #14394d; /* Dark card */
   padding: 2rem;
   border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
 h1 {
   margin-bottom: 0.5rem;
-  color: #00baff;
+  color: #00bfff;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #ccc;
 }
 
 textarea {
@@ -30,70 +36,53 @@ textarea {
   margin-top: 1rem;
   margin-bottom: 1rem;
   font-size: 1rem;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  background: #fff;
-  color: #333;
+  border-radius: 8px;
+  border: 1px solid #2a4d63;
   resize: vertical;
+  background: #1e4254;
+  color: #fff;
 }
 
 button {
-  background: #00baff;
+  background: #00bfff;
   border: none;
   color: white;
   padding: 1rem 2rem;
   font-size: 1rem;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
   transition: background 0.3s;
 }
 
 button:hover {
-  background: #0091cc;
+  background: #0099cc;
 }
 
-pre#answer {
-  background: #ffffff;
-  color: #222;
-  padding: 1.5rem;
+pre {
+  background: #1e4254;
+  padding: 1rem;
   border-radius: 8px;
   white-space: pre-wrap;
   margin-top: 1rem;
-  line-height: 1.5;
-  font-size: 1rem;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  min-height: 150px;
+  color: #fff;
 }
 
-.file-upload {
-  border: 2px dashed #00baff;
+.drop-zone {
+  border: 2px dashed #00bfff;
+  border-radius: 8px;
   padding: 1rem;
   text-align: center;
   margin-bottom: 1rem;
-  border-radius: 8px;
-  color: #aaa;
-  background: #f9f9f9;
-}
-
-.file-upload label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  color: #00baff;
   cursor: pointer;
+  background: #1e4254;
 }
 
-.file-upload input {
-  display: none;
+.drop-zone.dragover {
+  background: rgba(0, 191, 255, 0.1);
 }
 
-.file-upload span {
-  display: block;
-  margin-top: 0.5rem;
-  color: #666;
-}
-
-.file-upload .note {
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
-  color: #555;
+.drop-zone p {
+  margin: 0.5rem 0 0 0;
+  color: #ccc;
 }
