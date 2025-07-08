@@ -6,6 +6,7 @@ export const config = {
   api: {
     bodyParser: false,
   },
+  runtime: "nodejs",
 };
 
 const openai = new OpenAI({
@@ -63,7 +64,7 @@ export default async function handler(req, res) {
 
     try {
       const completion = await openai.chat.completions.create({
-        model: "gpt-4o", // Make sure your API key and account have access to vision (GPT-4o supports image input)
+        model: "gpt-4o",
         messages: attachments.length
           ? [
               {
