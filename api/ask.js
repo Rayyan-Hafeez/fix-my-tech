@@ -1,5 +1,5 @@
 import OpenAI from "openai";
-import formidable from "formidable";
+import { IncomingForm } from "formidable";
 import fs from "fs";
 
 export const config = {
@@ -14,14 +14,12 @@ const openai = new OpenAI({
 });
 
 export default async function handler(req, res) {
-  console.log("API handler called"); // 🟢 Debug log
-
   if (req.method !== "POST") {
     res.status(405).json({ error: "Method not allowed" });
     return;
   }
 
-  const form = new formidable.IncomingForm();
+  const form = new IncomingForm();
 
   form.parse(req, async (err, fields, files) => {
     if (err) {
@@ -30,9 +28,6 @@ export default async function handler(req, res) {
       return;
     }
 
-    console.log("Fields received:", fields);
-    console.log("Files received:", files);
-
     const question = fields.question;
     const imageFile = files.image;
 
@@ -40,18 +35,6 @@ export default async function handler(req, res) {
       res.status(400).json({ error: "Question or image is required" });
       return;
     }
-
-    let messages = [
-      {
-        role: "system",
-        content:
-          "You are a helpful assistant providing step-by-step tech support for PCs and mobile devices. If an image is provided, analyze it and include possible visual hints.",
-      },
-      {
-        role: "user",
-        content: question || "Analyze the attached image.",
-      },
-    ];
 
     let attachments = [];
 
@@ -80,7 +63,12 @@ export default async function handler(req, res) {
                 ],
               },
             ]
-          : messages,
+          : [
+              {
+                role: "user",
+                content: question,
+              },
+            ],
       });
 
       res.status(200).json({ answer: completion.choices[0].message.content });
