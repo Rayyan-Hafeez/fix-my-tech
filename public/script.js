@@ -37,7 +37,6 @@ fileInput.addEventListener("change", () => {
   }
 });
 
-// Example handler for "Get Help" button
 askBtn.addEventListener("click", async () => {
   const question = questionInput.value.trim();
   if (!question) {
@@ -54,7 +53,8 @@ askBtn.addEventListener("click", async () => {
       formData.append("image", fileInput.files[0]);
     }
 
-    const response = await fetch("https://fix-my-tech.vercel.app/api/ask", {
+    // ✅ Use relative path
+    const response = await fetch("/api/ask", {
       method: "POST",
       body: formData
     });
