@@ -44,7 +44,7 @@ askBtn.addEventListener("click", async () => {
     return;
   }
 
-  answerBox.textContent = "Loading...";
+  answerBox.textContent = "Thinking...";
 
   try {
     const formData = new FormData();
