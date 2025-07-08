@@ -51,24 +51,28 @@ export default async function handler(req, res) {
     }
 
     try {
+      const userContent = attachments.length
+        ? [
+            { type: "text", text: question },
+            ...attachments,
+          ]
+        : [
+            { type: "text", text: question },
+          ];
+
       const completion = await openai.chat.completions.create({
         model: "gpt-4o",
-        messages: attachments.length
-          ? [
-              {
-                role: "user",
-                content: [
-                  { type: "text", text: question },
-                  ...attachments,
-                ],
-              },
-            ]
-          : [
-              {
-                role: "user",
-                content: question,
-              },
-            ],
+        messages: [
+          {
+            role: "system",
+            content:
+              "You are a helpful assistant providing step-by-step tech support for PCs and mobile devices. If an image is provided, analyze it and include possible visual hints.",
+          },
+          {
+            role: "user",
+            content: userContent,
+          },
+        ],
       });
 
       res.status(200).json({ answer: completion.choices[0].message.content });
