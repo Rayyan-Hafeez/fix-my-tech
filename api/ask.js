@@ -53,11 +53,11 @@ export default async function handler(req, res) {
     try {
       const userContent = attachments.length
         ? [
-            { type: "text", text: question },
+            { type: "text", text: String(question) },
             ...attachments,
           ]
         : [
-            { type: "text", text: question },
+            { type: "text", text: String(question) },
           ];
 
       const completion = await openai.chat.completions.create({
