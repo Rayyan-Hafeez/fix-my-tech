@@ -14,6 +14,8 @@ const openai = new OpenAI({
 });
 
 export default async function handler(req, res) {
+  console.log("API handler called"); // 🟢 Debug log
+
   if (req.method !== "POST") {
     res.status(405).json({ error: "Method not allowed" });
     return;
@@ -27,6 +29,9 @@ export default async function handler(req, res) {
       res.status(500).json({ error: "Error parsing form" });
       return;
     }
+
+    console.log("Fields received:", fields);
+    console.log("Files received:", files);
 
     const question = fields.question;
     const imageFile = files.image;
