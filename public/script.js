@@ -47,9 +47,6 @@ askBtn.addEventListener("click", async () => {
 
   answerBox.textContent = "Loading...";
 
-  // Here you would include code to handle image sending and question sending to your backend
-  // For example, using fetch to your /api/ask endpoint
-
   try {
     const formData = new FormData();
     formData.append("question", question);
@@ -57,7 +54,7 @@ askBtn.addEventListener("click", async () => {
       formData.append("image", fileInput.files[0]);
     }
 
-    const response = await fetch("/api/ask", {
+    const response = await fetch("https://fix-my-tech.vercel.app/api/ask", {
       method: "POST",
       body: formData
     });
