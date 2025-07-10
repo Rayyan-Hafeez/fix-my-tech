@@ -106,6 +106,12 @@ pre {
   align-items: center;
   font-family: Arial, sans-serif;
   z-index: 9999;
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+
+.splash-screen.fade-out {
+  opacity: 0;
 }
 
 .splash-screen h1 {
