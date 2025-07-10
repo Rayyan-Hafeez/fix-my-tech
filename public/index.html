@@ -7,7 +7,12 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
+  <div id="splash-screen" class="splash-screen">
+    <h1>TechCure</h1>
+    <p>Speed. Precision. Peace of Mind.</p>
+  </div>
+
+  <div class="container" style="display: none;">
     <h1>TechCure</h1>
     <p>Describe your tech issue below and get instant AI help.</p>
 
@@ -25,5 +30,18 @@
   </div>
 
   <script src="script.js"></script>
+  <script>
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const splash = document.getElementById('splash-screen');
+        splash.classList.add('fade-out');
+
+        setTimeout(() => {
+          splash.style.display = 'none';
+          document.querySelector('.container').style.display = 'block';
+        }, 1000); // Fade duration
+      }, 3000); // How long splash screen shows before fade starts
+    });
+  </script>
 </body>
 </html>
