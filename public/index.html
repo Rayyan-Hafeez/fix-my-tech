@@ -33,9 +33,14 @@
   <script>
     window.addEventListener('load', () => {
       setTimeout(() => {
-        document.getElementById('splash-screen').style.display = 'none';
-        document.querySelector('.container').style.display = 'block';
-      }, 2000); // Show splash screen for 2 seconds
+        const splash = document.getElementById('splash-screen');
+        splash.classList.add('fade-out');
+
+        setTimeout(() => {
+          splash.style.display = 'none';
+          document.querySelector('.container').style.display = 'block';
+        }, 1000); // 1 second fade duration
+      }, 5000); // Splash screen display time before fade starts
     });
   </script>
 </body>
