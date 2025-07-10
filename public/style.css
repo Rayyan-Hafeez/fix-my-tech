@@ -1,5 +1,5 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Inter', Arial, sans-serif;
   background: #0f3344;
   color: #fff;
   display: flex;
@@ -14,8 +14,8 @@ body {
   width: 100%;
   background: #14394d;
   padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 h1 {
@@ -37,11 +37,17 @@ textarea {
   margin-top: 1rem;
   margin-bottom: 1rem;
   font-size: 1rem;
-  border-radius: 8px;
+  border-radius: 12px;
   border: 1px solid #2a4d63;
   resize: vertical;
   background: #1e4254;
   color: #fff;
+  transition: border 0.3s;
+}
+
+textarea:focus {
+  border-color: #00bfff;
+  outline: none;
 }
 
 button {
@@ -50,13 +56,15 @@ button {
   color: white;
   padding: 1rem 2rem;
   font-size: 1rem;
-  border-radius: 8px;
+  border-radius: 12px;
   cursor: pointer;
-  transition: background 0.3s;
+  box-shadow: 0 4px 12px rgba(0, 191, 255, 0.3);
+  transition: background 0.3s, transform 0.2s;
 }
 
 button:hover {
   background: #0099cc;
+  transform: translateY(-2px);
 }
 
 pre {
@@ -64,7 +72,7 @@ pre {
   box-sizing: border-box;
   background: #1e4254;
   padding: 1rem;
-  border-radius: 8px;
+  border-radius: 12px;
   white-space: pre-wrap;
   margin-top: 1rem;
   min-height: 150px;
@@ -74,12 +82,18 @@ pre {
 
 .drop-zone {
   border: 2px dashed #00bfff;
-  border-radius: 8px;
+  border-radius: 12px;
   padding: 1rem;
   text-align: center;
   margin-bottom: 1rem;
   cursor: pointer;
   background: #1e4254;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.drop-zone:hover {
+  background: rgba(0, 191, 255, 0.05);
+  border-color: #0099cc;
 }
 
 .drop-zone.dragover {
@@ -104,7 +118,7 @@ pre {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: Arial, sans-serif;
+  font-family: 'Inter', Arial, sans-serif;
   z-index: 9999;
   opacity: 1;
   transition: opacity 1s ease;
