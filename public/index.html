@@ -7,16 +7,11 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div id="splash-screen" class="splash-screen">
-    <h1>TECHCURE</h1>
-    <p>Speed. Precision. Peace of Mind.</p>
-  </div>
-
-  <div class="container" style="display: none;">
+  <div class="container">
     <h1>TechCure</h1>
-    <p class="subtitle">Describe your tech issue below and get instant AI help.</p>
+    <p>Describe your tech issue below and get instant AI help.</p>
 
-    <textarea id="question" placeholder="E.g. My laptop won't turn on"></textarea>
+    <textarea id="question" placeholder="E.g. My laptop won’t turn on"></textarea>
 
     <div id="drop-zone" class="drop-zone">
       <p><strong>Attach image (drag and drop)</strong></p>
@@ -30,18 +25,5 @@
   </div>
 
   <script src="script.js"></script>
-  <script>
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        const splash = document.getElementById('splash-screen');
-        splash.classList.add('fade-out');
-
-        setTimeout(() => {
-          splash.style.display = 'none';
-          document.querySelector('.container').style.display = 'flex';
-        }, 1000);
-      }, 4000);
-    });
-  </script>
 </body>
 </html>
