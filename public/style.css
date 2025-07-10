@@ -75,7 +75,6 @@ textarea {
   font-size: 0.95rem;
   margin-bottom: 1rem;
   transition: border 0.3s, box-shadow 0.3s;
-  box-sizing: border-box;
 }
 
 textarea:focus {
@@ -89,8 +88,11 @@ textarea:focus {
   border-radius: 12px;
   padding: 1rem;
   margin-bottom: 1rem;
-  transition: background 0.3s, border 0.3s;
-  box-sizing: border-box;
+  transition: background 0.3s, border 0.3s, box-shadow 0.3s;
+}
+
+.drop-zone:hover {
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
 }
 
 .drop-zone.dragover {
@@ -112,7 +114,6 @@ button {
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-sizing: border-box;
 }
 
 button:hover {
@@ -134,8 +135,16 @@ pre {
   color: #d8eaff;
   font-size: 0.95rem;
   overflow-x: auto;
-  margin-left: 0;
-  margin-right: 0;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.7s ease, opacity 0.7s ease, padding 0.7s ease;
+}
+
+/* Show answer box */
+pre.show {
+  max-height: 1000px;
+  opacity: 1;
+  padding: 1rem;
 }
 
 /* Animations */
@@ -147,5 +156,20 @@ pre {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Responsive tweaks */
+@media (max-width: 500px) {
+  .container {
+    padding: 1.2rem;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  button {
+    padding: 0.6rem 1.5rem;
   }
 }
