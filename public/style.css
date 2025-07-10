@@ -9,6 +9,7 @@ body {
   align-items: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #d8eaff;
+  overflow-x: hidden;
 }
 
 /* Splash screen */
@@ -39,12 +40,20 @@ body {
   border: 1px solid rgba(0, 255, 255, 0.3);
   border-radius: 20px;
   backdrop-filter: blur(20px);
-  box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+  box-shadow: 0 0 40px rgba(0, 255, 255, 0.3);
   padding: 2rem;
   width: 90%;
   max-width: 450px;
   text-align: center;
   animation: fadeIn 1s ease forwards;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: transform 1s ease, opacity 1s ease;
+}
+
+.container.show {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 /* Title */
@@ -74,13 +83,14 @@ textarea {
   outline: none;
   font-size: 0.95rem;
   margin-bottom: 1rem;
-  transition: border 0.3s, box-shadow 0.3s;
+  transition: border 0.3s, box-shadow 0.3s, transform 0.2s;
   box-sizing: border-box;
 }
 
 textarea:focus {
   border: 1px solid #00ffff;
-  box-shadow: 0 0 10px #00ffff;
+  box-shadow: 0 0 15px #00ffff;
+  transform: scale(1.02);
 }
 
 /* Drop zone */
@@ -89,12 +99,13 @@ textarea:focus {
   border-radius: 12px;
   padding: 1rem;
   margin-bottom: 1rem;
-  transition: background 0.3s, border 0.3s, box-shadow 0.3s;
+  transition: background 0.3s, border 0.3s, box-shadow 0.3s, transform 0.2s;
   box-sizing: border-box;
 }
 
 .drop-zone:hover {
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+  transform: scale(1.02);
 }
 
 .drop-zone.dragover {
@@ -115,12 +126,13 @@ button {
   font-size: 1rem;
   border-radius: 12px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s ease, transform 0.2s;
 }
 
 button:hover {
   background: rgba(0, 255, 255, 0.1);
-  box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+  box-shadow: 0 0 15px #00ffff, 0 0 25px #00ffff;
+  transform: scale(1.05);
 }
 
 /* AI answer box */
