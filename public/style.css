@@ -1,4 +1,4 @@
-/* Background gradient similar to concept */
+/* General background */
 body {
   margin: 0;
   padding: 0;
@@ -11,6 +11,29 @@ body {
   color: #d8eaff;
 }
 
+/* Splash screen */
+.splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 30% 30%, #001f3f, #00162a);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #00ffff;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+
+.splash-screen.fade-out {
+  opacity: 0;
+}
+
+/* Container card */
 .container {
   background: rgba(0, 20, 40, 0.6);
   border: 1px solid rgba(0, 255, 255, 0.3);
@@ -24,18 +47,21 @@ body {
   animation: fadeIn 1s ease forwards;
 }
 
+/* Title */
 h1 {
   font-size: 2.2rem;
   color: #00ffff;
   margin-bottom: 0.5rem;
 }
 
+/* Subtitle */
 p {
   color: #9fdfff;
   margin-top: 0;
   margin-bottom: 1.5rem;
 }
 
+/* Textarea */
 textarea {
   width: 100%;
   height: 100px;
@@ -56,6 +82,7 @@ textarea:focus {
   box-shadow: 0 0 10px #00ffff;
 }
 
+/* Drop zone */
 .drop-zone {
   border: 2px dashed rgba(0, 255, 255, 0.5);
   border-radius: 12px;
@@ -73,6 +100,7 @@ textarea:focus {
   margin: 0.5rem 0;
 }
 
+/* Button */
 button {
   background: transparent;
   border: 1px solid #00ffff;
@@ -89,7 +117,10 @@ button:hover {
   box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
 }
 
+/* AI answer box */
 pre {
+  width: 100%;
+  box-sizing: border-box;
   text-align: left;
   background: rgba(0, 20, 40, 0.4);
   border: 1px solid rgba(0, 255, 255, 0.3);
