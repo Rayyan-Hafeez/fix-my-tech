@@ -1,126 +1,25 @@
 body {
-  font-family: 'Inter', Arial, sans-serif;
-  background: #0f3344;
-  color: #fff;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #007acc, #00c6ff);
+  color: #ffffff;
+  height: 100vh;
   display: flex;
   justify-content: center;
-  padding: 2rem;
-  min-height: 100vh;
-  margin: 0;
+  align-items: center;
 }
 
-.container {
-  max-width: 600px;
-  width: 100%;
-  background: #14394d;
-  padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-h1 {
-  margin-bottom: 0.5rem;
-  color: #00bfff;
-}
-
-p {
-  margin-top: 0;
-  margin-bottom: 1rem;
-  color: #ccc;
-}
-
-textarea {
-  width: 100%;
-  box-sizing: border-box;
-  height: 120px;
-  padding: 1rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  font-size: 1rem;
-  border-radius: 12px;
-  border: 1px solid #2a4d63;
-  resize: vertical;
-  background: #1e4254;
-  color: #fff;
-  transition: border 0.3s;
-}
-
-textarea:focus {
-  border-color: #00bfff;
-  outline: none;
-}
-
-button {
-  background: #00bfff;
-  border: none;
-  color: white;
-  padding: 1rem 2rem;
-  font-size: 1rem;
-  border-radius: 12px;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 191, 255, 0.3);
-  transition: background 0.3s, transform 0.2s;
-}
-
-button:hover {
-  background: #0099cc;
-  transform: translateY(-2px);
-}
-
-pre {
-  width: 100%;
-  box-sizing: border-box;
-  background: #1e4254;
-  padding: 1rem;
-  border-radius: 12px;
-  white-space: pre-wrap;
-  margin-top: 1rem;
-  min-height: 150px;
-  color: #fff;
-  font-size: 1.05rem;
-}
-
-.drop-zone {
-  border: 2px dashed #00bfff;
-  border-radius: 12px;
-  padding: 1rem;
-  text-align: center;
-  margin-bottom: 1rem;
-  cursor: pointer;
-  background: #1e4254;
-  transition: background 0.3s, border-color 0.3s;
-}
-
-.drop-zone:hover {
-  background: rgba(0, 191, 255, 0.05);
-  border-color: #0099cc;
-}
-
-.drop-zone.dragover {
-  background: rgba(0, 191, 255, 0.1);
-}
-
-.drop-zone p {
-  margin: 0.5rem 0 0 0;
-  color: #ccc;
-}
-
-/* Splash screen styles */
 .splash-screen {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #007acc, #00bfff);
-  color: #fff;
+  background: linear-gradient(135deg, #007acc, #00c6ff);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: 'Inter', Arial, sans-serif;
-  z-index: 9999;
-  opacity: 1;
   transition: opacity 1s ease;
 }
 
@@ -131,10 +30,103 @@ pre {
 .splash-screen h1 {
   font-size: 3rem;
   margin: 0;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
 }
 
 .splash-screen p {
   font-size: 1.2rem;
   margin-top: 1rem;
+  opacity: 0.8;
+}
+
+.container {
+  max-width: 500px;
+  width: 90%;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container h1 {
+  color: #ffffff;
+  margin-bottom: 0.2rem;
+}
+
+.subtitle {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  color: #e0e0e0;
+  text-align: center;
+}
+
+textarea {
+  width: 100%;
+  height: 100px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 10px;
+  resize: vertical;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+}
+
+textarea::placeholder {
+  color: #cccccc;
+}
+
+.drop-zone {
+  width: 100%;
+  border: 2px dashed #00c6ff;
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  transition: background 0.3s;
+}
+
+.drop-zone.dragover {
+  background: rgba(0, 198, 255, 0.2);
+}
+
+.drop-zone p {
+  margin: 0.5rem 0;
+  color: #cccccc;
+}
+
+button {
+  width: 100%;
+  padding: 1rem;
+  background: #00c6ff;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #00aee3;
+}
+
+pre {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border-radius: 10px;
+  white-space: pre-wrap;
+  margin-top: 1rem;
+  color: #fff;
+  font-size: 1.05rem;
+  overflow-x: auto;
 }

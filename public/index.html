@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>TechCure – AI Tech Support</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
 </head>
 <body>
   <div id="splash-screen" class="splash-screen">
@@ -15,7 +14,7 @@
 
   <div class="container" style="display: none;">
     <h1>TechCure</h1>
-    <p>Describe your tech issue below and get instant AI help.</p>
+    <p class="subtitle">Describe your tech issue below and get instant AI help.</p>
 
     <textarea id="question" placeholder="E.g. My laptop won't turn on"></textarea>
 
@@ -39,9 +38,9 @@
 
         setTimeout(() => {
           splash.style.display = 'none';
-          document.querySelector('.container').style.display = 'block';
-        }, 1000); // 1 second fade duration
-      }, 4000); // Splash screen display time before fade starts (4 seconds)
+          document.querySelector('.container').style.display = 'flex';
+        }, 1000);
+      }, 4000);
     });
   </script>
 </body>
