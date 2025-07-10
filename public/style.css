@@ -75,6 +75,7 @@ textarea {
   font-size: 0.95rem;
   margin-bottom: 1rem;
   transition: border 0.3s, box-shadow 0.3s;
+  box-sizing: border-box;
 }
 
 textarea:focus {
@@ -89,6 +90,7 @@ textarea:focus {
   padding: 1rem;
   margin-bottom: 1rem;
   transition: background 0.3s, border 0.3s;
+  box-sizing: border-box;
 }
 
 .drop-zone.dragover {
@@ -110,6 +112,7 @@ button {
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
+  box-sizing: border-box;
 }
 
 button:hover {
@@ -131,6 +134,8 @@ pre {
   color: #d8eaff;
   font-size: 0.95rem;
   overflow-x: auto;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 /* Animations */
