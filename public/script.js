@@ -5,6 +5,15 @@ const askBtn = document.getElementById("askBtn");
 const questionInput = document.getElementById("question");
 const answerBox = document.getElementById("answer");
 
+// Splash screen hide
+window.addEventListener("load", () => {
+  const splash = document.getElementById("splash-screen");
+  splash.style.opacity = 0;
+  setTimeout(() => {
+    splash.style.display = "none";
+  }, 500);
+});
+
 // Drop zone events
 dropZone.addEventListener("click", () => {
   fileInput.click();
@@ -53,7 +62,6 @@ askBtn.addEventListener("click", async () => {
       formData.append("image", fileInput.files[0]);
     }
 
-    // ✅ Use relative path
     const response = await fetch("/api/ask", {
       method: "POST",
       body: formData
