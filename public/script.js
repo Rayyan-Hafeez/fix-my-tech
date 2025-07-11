@@ -41,12 +41,10 @@ askBtn.addEventListener("click", async () => {
   const question = questionInput.value.trim();
   if (!question) {
     answerBox.textContent = "Please enter a question.";
-    answerBox.classList.add("show");
     return;
   }
 
   answerBox.textContent = "Thinking...";
-  answerBox.classList.add("show");
 
   try {
     const formData = new FormData();
