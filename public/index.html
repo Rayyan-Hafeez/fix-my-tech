@@ -4,10 +4,8 @@
   <!-- Android icons -->
   <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
   <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
-
   <!-- Apple touch icon -->
   <link rel="apple-touch-icon" href="/android-chrome-192x192.png" />
-
   <!-- Default favicon -->
   <link rel="icon" type="image/png" href="/favicon.png" />
 
@@ -45,12 +43,11 @@
       setTimeout(() => {
         const splash = document.getElementById('splash-screen');
         splash.classList.add('fade-out');
-
         setTimeout(() => {
           splash.style.display = 'none';
           document.querySelector('.container').style.display = 'block';
         }, 1000);
-      }, 3000); // Show splash for 3 sec before fade
+      }, 3000);
     });
   </script>
 </body>
