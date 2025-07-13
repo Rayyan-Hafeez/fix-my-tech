@@ -6,19 +6,12 @@ const questionInput = document.getElementById("question");
 const answerBox = document.getElementById("answer");
 
 // Drop zone events
-dropZone.addEventListener("click", () => {
-  fileInput.click();
-});
-
+dropZone.addEventListener("click", () => { fileInput.click(); });
 dropZone.addEventListener("dragover", (e) => {
   e.preventDefault();
   dropZone.classList.add("dragover");
 });
-
-dropZone.addEventListener("dragleave", () => {
-  dropZone.classList.remove("dragover");
-});
-
+dropZone.addEventListener("dragleave", () => { dropZone.classList.remove("dragover"); });
 dropZone.addEventListener("drop", (e) => {
   e.preventDefault();
   dropZone.classList.remove("dragover");
@@ -28,7 +21,6 @@ dropZone.addEventListener("drop", (e) => {
     fileName.textContent = files[0].name;
   }
 });
-
 fileInput.addEventListener("change", () => {
   if (fileInput.files.length) {
     fileName.textContent = fileInput.files[0].name;
@@ -60,7 +52,9 @@ askBtn.addEventListener("click", async () => {
 
     const data = await response.json();
     if (data.answer) {
-      answerBox.textContent = data.answer;
+      // Split by lines for step-by-step formatting
+      const steps = data.answer.split(/\n+/).filter(line => line.trim() !== "");
+      answerBox.textContent = steps.map((step, index) => `• ${step}`).join("\n");
     } else {
       answerBox.textContent = "Sorry, there was an error processing your request.";
     }

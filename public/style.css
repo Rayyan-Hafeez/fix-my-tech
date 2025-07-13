@@ -1,4 +1,3 @@
-/* Animated gradient background */
 body {
   margin: 0;
   padding: 0;
@@ -14,18 +13,11 @@ body {
 }
 
 @keyframes gradientMove {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-/* Splash screen */
 .splash-screen {
   position: fixed;
   top: 0;
@@ -43,11 +35,8 @@ body {
   transition: opacity 1s ease;
 }
 
-.splash-screen.fade-out {
-  opacity: 0;
-}
+.splash-screen.fade-out { opacity: 0; }
 
-/* Container card */
 .container {
   background: rgba(0, 20, 40, 0.6);
   border: 1px solid rgba(0, 255, 255, 0.3);
@@ -101,18 +90,10 @@ textarea:focus {
   transition: background 0.3s, border 0.3s, box-shadow 0.3s;
 }
 
-.drop-zone:hover {
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
-}
+.drop-zone:hover { box-shadow: 0 0 15px rgba(0, 255, 255, 0.4); }
+.drop-zone.dragover { background: rgba(0, 255, 255, 0.1); border: 2px dashed #00ffff; }
 
-.drop-zone.dragover {
-  background: rgba(0, 255, 255, 0.1);
-  border: 2px dashed #00ffff;
-}
-
-.drop-zone p {
-  margin: 0.5rem 0;
-}
+.drop-zone p { margin: 0.5rem 0; }
 
 button {
   background: transparent;
@@ -143,32 +124,17 @@ pre {
   color: #d8eaff;
   font-size: 0.95rem;
   overflow-x: auto;
-  min-height: 150px; /* 💎 Always aligned! */
+  min-height: 150px;
   transition: all 0.3s ease;
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsive tweaks */
 @media (max-width: 500px) {
-  .container {
-    padding: 1.2rem;
-  }
-
-  h1 {
-    font-size: 1.8rem;
-  }
-
-  button {
-    padding: 0.6rem 1.5rem;
-  }
+  .container { padding: 1.2rem; }
+  h1 { font-size: 1.8rem; }
+  button { padding: 0.6rem 1.5rem; }
 }
