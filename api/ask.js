@@ -6,7 +6,6 @@ export const config = {
   api: {
     bodyParser: false,
   },
-  runtime: "nodejs",
 };
 
 const openai = new OpenAI({
@@ -28,51 +27,35 @@ export default async function handler(req, res) {
       return;
     }
 
-    const question = fields.question;
-    const imageFile = files.image;
-
-    if (!question && !imageFile) {
-      res.status(400).json({ error: "Question or image is required" });
-      return;
-    }
+    const history = JSON.parse(fields.history || "[]");
 
     let attachments = [];
-
-    if (imageFile) {
-      const fileData = fs.readFileSync(imageFile[0].filepath);
+    if (files.image) {
+      const fileData = fs.readFileSync(files.image[0].filepath);
       const base64Image = fileData.toString("base64");
-
       attachments.push({
         type: "image_url",
         image_url: {
-          url: `data:${imageFile[0].mimetype};base64,${base64Image}`,
+          url: `data:${files.image[0].mimetype};base64,${base64Image}`,
         },
       });
     }
 
-    try {
-      const userContent = attachments.length
-        ? [
-            { type: "text", text: String(question) },
-            ...attachments,
-          ]
-        : [
-            { type: "text", text: String(question) },
-          ];
+    if (attachments.length > 0) {
+      // Add image attachment as last user message if image uploaded
+      history.push({
+        role: "user",
+        content: [
+          { type: "text", text: history[history.length - 1]?.content || "Analyze this image." },
+          ...attachments,
+        ],
+      });
+    }
 
+    try {
       const completion = await openai.chat.completions.create({
         model: "gpt-4o",
-        messages: [
-          {
-            role: "system",
-            content:
-              "You are a helpful assistant providing step-by-step tech support for PCs and mobile devices. If an image is provided, analyze it and include possible visual hints.",
-          },
-          {
-            role: "user",
-            content: userContent,
-          },
-        ],
+        messages: history,
       });
 
       res.status(200).json({ answer: completion.choices[0].message.content });
