@@ -10,6 +10,11 @@ body {
   align-items: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #d8eaff;
+  box-sizing: border-box; /* ✅ global fix for width issues */
+}
+
+*, *::before, *::after {
+  box-sizing: inherit; /* ✅ make sure all elements follow box-sizing */
 }
 
 @keyframes gradientMove {
@@ -113,8 +118,6 @@ button:hover {
 
 pre {
   width: 100%;
-  box-sizing: border-box;
-  text-align: left;
   background: rgba(0, 20, 40, 0.4);
   border: 1px solid rgba(0, 255, 255, 0.3);
   border-radius: 12px;
