@@ -44,3 +44,17 @@ function addMessage(sender, text) {
   chatBox.appendChild(msg);
   chatBox.scrollTop = chatBox.scrollHeight;
 }
+
+// Splash screen logic
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    const splash = document.getElementById("splash-screen");
+    splash.classList.add("fade-out");
+
+    setTimeout(() => {
+      splash.style.display = "none";
+      document.querySelector(".chat-wrapper").style.display = "block";
+      document.getElementById("language-select").style.display = "block";
+    }, 1000); // Wait for fade-out
+  }, 3000); // Show splash for 3 seconds
+});
