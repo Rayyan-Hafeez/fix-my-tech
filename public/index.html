@@ -1,54 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Android icons -->
-  <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
-  <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
-  <!-- Apple touch icon -->
-  <link rel="apple-touch-icon" href="/android-chrome-192x192.png" />
-  <!-- Default favicon -->
-  <link rel="icon" type="image/png" href="/favicon.png" />
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>TechCure – AI Tech Support</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="favicon.png" />
 </head>
 <body>
-  <div id="splash-screen" class="splash-screen">
-    <h1>TECHCURE</h1>
-    <p>Speed. Precision. Peace of Mind.</p>
+  <div id="language-select">
+    <select id="langPicker">
+      <option value="en">English</option>
+      <option value="ur">Urdu</option>
+      <option value="es">Español</option>
+      <option value="fr">Français</option>
+    </select>
   </div>
 
-  <div class="container" style="display: none;">
-    <h1>TechCure</h1>
-    <p>Describe your tech issue below and get instant AI help.</p>
-
-    <textarea id="question" placeholder="E.g. My laptop won't turn on"></textarea>
-
-    <div id="drop-zone" class="drop-zone">
-      <p><strong>Attach image (drag and drop)</strong></p>
-      <p id="file-name">No image attached</p>
-      <p class="note">Attach an image or screenshot (video not supported yet)</p>
-      <input type="file" id="image" accept="image/*" style="display: none;" />
+  <div class="chat-container">
+    <div class="chat-window" id="chat-window"></div>
+    <div class="input-area">
+      <textarea id="question" placeholder="Describe your tech issue..."></textarea>
+      <input type="file" id="fileInput" />
+      <button id="micBtn">🎤</button>
+      <button id="sendBtn">Send</button>
     </div>
-
-    <button id="askBtn">Get Help</button>
-    <pre id="answer"></pre>
   </div>
 
   <script src="script.js"></script>
-  <script>
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        const splash = document.getElementById('splash-screen');
-        splash.classList.add('fade-out');
-        setTimeout(() => {
-          splash.style.display = 'none';
-          document.querySelector('.container').style.display = 'block';
-        }, 1000);
-      }, 3000);
-    });
-  </script>
 </body>
 </html>
