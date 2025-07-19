@@ -1,70 +1,75 @@
-const sendBtn = document.getElementById("sendBtn");
+const dropZone = document.getElementById("drop-zone");
+const fileInput = document.getElementById("image");
+const fileName = document.getElementById("file-name");
+const askBtn = document.getElementById("askBtn");
 const questionInput = document.getElementById("question");
-const chatWindow = document.getElementById("chat-window");
-const micBtn = document.getElementById("micBtn");
-const fileInput = document.getElementById("fileInput");
-const langPicker = document.getElementById("langPicker");
+const answerBox = document.getElementById("answer");
 
-// Message Display
-function addMessage(message, sender) {
-  const msgDiv = document.createElement("div");
-  msgDiv.className = `message ${sender}`;
-  msgDiv.textContent = message;
-  chatWindow.appendChild(msgDiv);
-  chatWindow.scrollTop = chatWindow.scrollHeight;
-}
+const conversationHistory = [
+  {
+    role: "system",
+    content: "You are a helpful assistant providing step-by-step tech support for PCs and mobile devices. Remember the conversation and reply accordingly."
+  }
+];
 
-// Translation (client-side demo only)
-function translate(text, lang) {
-  const translations = {
-    ur: "براہ کرم اپنے مسئلے کی وضاحت کریں۔",
-    es: "Por favor describe tu problema.",
-    fr: "Veuillez décrire votre problème."
-  };
-  return translations[lang] || text;
-}
-
-// Voice Input
-micBtn.addEventListener("click", () => {
-  const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-  recognition.lang = langPicker.value || "en-US";
-  recognition.onresult = (event) => {
-    questionInput.value = event.results[0][0].transcript;
-  };
-  recognition.start();
+dropZone.addEventListener("click", () => { fileInput.click(); });
+dropZone.addEventListener("dragover", (e) => {
+  e.preventDefault();
+  dropZone.classList.add("dragover");
+});
+dropZone.addEventListener("dragleave", () => { dropZone.classList.remove("dragover"); });
+dropZone.addEventListener("drop", (e) => {
+  e.preventDefault();
+  dropZone.classList.remove("dragover");
+  const files = e.dataTransfer.files;
+  if (files.length) {
+    fileInput.files = files;
+    fileName.textContent = files[0].name;
+  }
+});
+fileInput.addEventListener("change", () => {
+  if (fileInput.files.length) {
+    fileName.textContent = fileInput.files[0].name;
+  } else {
+    fileName.textContent = "No image attached";
+  }
 });
 
-// Handle Send
-sendBtn.addEventListener("click", async () => {
+askBtn.addEventListener("click", async () => {
   const question = questionInput.value.trim();
-  const lang = langPicker.value;
-
-  if (!question) return;
-  addMessage(question, "user");
-
-  const formData = new FormData();
-  formData.append("question", question);
-  if (fileInput.files[0]) {
-    formData.append("image", fileInput.files[0]);
+  if (!question) {
+    answerBox.textContent = "Please enter a question.";
+    return;
   }
+
+  // Add user message to history
+  conversationHistory.push({ role: "user", content: question });
+  answerBox.textContent = "Thinking...";
 
   try {
-    const res = await fetch("/api/ask", {
+    const formData = new FormData();
+    formData.append("history", JSON.stringify(conversationHistory));
+    if (fileInput.files[0]) {
+      formData.append("image", fileInput.files[0]);
+    }
+
+    const response = await fetch("/api/ask", {
       method: "POST",
-      body: formData,
+      body: formData
     });
 
-    const data = await res.json();
-    const answer = translate(data.answer, lang);
-    addMessage(answer, "bot");
+    const data = await response.json();
+    if (data.answer) {
+      // Add assistant reply to history
+      conversationHistory.push({ role: "assistant", content: data.answer });
 
-    // Track basic usage
-    console.log("User asked:", question);
-    console.log("Answer:", data.answer);
-  } catch (err) {
-    addMessage("Error getting answer.", "bot");
-    console.error(err);
+      const steps = data.answer.split(/\n+/).filter(line => line.trim() !== "");
+      answerBox.textContent = steps.map(step => `• ${step}`).join("\n");
+    } else {
+      answerBox.textContent = "Sorry, there was an error processing your request.";
+    }
+  } catch (error) {
+    console.error(error);
+    answerBox.textContent = "Error contacting server.";
   }
-
-  questionInput.value = "";
 });
