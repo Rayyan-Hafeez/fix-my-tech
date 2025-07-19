@@ -5,19 +5,18 @@ const askBtn = document.getElementById("askBtn");
 const questionInput = document.getElementById("question");
 const answerBox = document.getElementById("answer");
 
-const conversationHistory = [
-  {
-    role: "system",
-    content: "You are a helpful assistant providing step-by-step tech support for PCs and mobile devices. Remember the conversation and reply accordingly."
-  }
-];
-
+// Drop zone events
 dropZone.addEventListener("click", () => { fileInput.click(); });
+
 dropZone.addEventListener("dragover", (e) => {
   e.preventDefault();
   dropZone.classList.add("dragover");
 });
-dropZone.addEventListener("dragleave", () => { dropZone.classList.remove("dragover"); });
+
+dropZone.addEventListener("dragleave", () => {
+  dropZone.classList.remove("dragover");
+});
+
 dropZone.addEventListener("drop", (e) => {
   e.preventDefault();
   dropZone.classList.remove("dragover");
@@ -27,6 +26,7 @@ dropZone.addEventListener("drop", (e) => {
     fileName.textContent = files[0].name;
   }
 });
+
 fileInput.addEventListener("change", () => {
   if (fileInput.files.length) {
     fileName.textContent = fileInput.files[0].name;
@@ -42,13 +42,11 @@ askBtn.addEventListener("click", async () => {
     return;
   }
 
-  // Add user message to history
-  conversationHistory.push({ role: "user", content: question });
   answerBox.textContent = "Thinking...";
 
   try {
     const formData = new FormData();
-    formData.append("history", JSON.stringify(conversationHistory));
+    formData.append("question", question);
     if (fileInput.files[0]) {
       formData.append("image", fileInput.files[0]);
     }
@@ -60,11 +58,8 @@ askBtn.addEventListener("click", async () => {
 
     const data = await response.json();
     if (data.answer) {
-      // Add assistant reply to history
-      conversationHistory.push({ role: "assistant", content: data.answer });
-
       const steps = data.answer.split(/\n+/).filter(line => line.trim() !== "");
-      answerBox.textContent = steps.map(step => `• ${step}`).join("\n");
+      answerBox.textContent = steps.map((step, index) => `• ${step}`).join("\n");
     } else {
       answerBox.textContent = "Sorry, there was an error processing your request.";
     }
