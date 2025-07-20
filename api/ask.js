@@ -2,7 +2,6 @@ import OpenAI from "openai";
 import { IncomingForm } from "formidable";
 import fs from "fs";
 
-// Disable Vercel's default body parser
 export const config = {
   api: {
     bodyParser: false,
@@ -15,8 +14,7 @@ const openai = new OpenAI({
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
-    res.status(405).json({ error: "Method not allowed" });
-    return;
+    return res.status(405).json({ error: "Method not allowed" });
   }
 
   const form = new IncomingForm();
@@ -24,8 +22,7 @@ export default async function handler(req, res) {
   form.parse(req, async (err, fields, files) => {
     if (err) {
       console.error("Form parsing error:", err);
-      res.status(500).json({ error: "Error parsing form" });
-      return;
+      return res.status(500).json({ error: "Error parsing form" });
     }
 
     const question = fields.question || "";
@@ -34,11 +31,9 @@ export default async function handler(req, res) {
     try {
       history = JSON.parse(fields.history || "[]");
     } catch (parseErr) {
-      console.warn("History parsing failed, starting fresh.");
-      history = [];
+      console.warn("History parsing failed, using empty history.");
     }
 
-    // Add the question to history as user input
     if (question) {
       history.push({
         role: "user",
@@ -46,24 +41,27 @@ export default async function handler(req, res) {
       });
     }
 
-    // Handle image if uploaded
     if (files.image && files.image[0]) {
-      const fileData = fs.readFileSync(files.image[0].filepath);
-      const base64Image = fileData.toString("base64");
-      const mimetype = files.image[0].mimetype;
+      try {
+        const fileData = fs.readFileSync(files.image[0].filepath);
+        const base64Image = fileData.toString("base64");
+        const mimetype = files.image[0].mimetype;
 
-      history.push({
-        role: "user",
-        content: [
-          { type: "text", text: question || "Analyze this image." },
-          {
-            type: "image_url",
-            image_url: {
-              url: `data:${mimetype};base64,${base64Image}`,
+        history.push({
+          role: "user",
+          content: [
+            { type: "text", text: question || "Analyze this image." },
+            {
+              type: "image_url",
+              image_url: {
+                url: `data:${mimetype};base64,${base64Image}`,
+              },
             },
-          },
-        ],
-      });
+          ],
+        });
+      } catch (fileErr) {
+        console.error("File reading error:", fileErr);
+      }
     }
 
     try {
@@ -73,10 +71,10 @@ export default async function handler(req, res) {
       });
 
       const reply = completion.choices?.[0]?.message?.content || "No response.";
-      res.status(200).json({ answer: reply });
-    } catch (error) {
-      console.error("OpenAI API error:", error);
-      res.status(500).json({ error: "OpenAI API error" });
+      return res.status(200).json({ answer: reply });
+    } catch (apiErr) {
+      console.error("OpenAI API error:", apiErr);
+      return res.status(500).json({ error: apiErr.message || "OpenAI API error" });
     }
   });
 }
