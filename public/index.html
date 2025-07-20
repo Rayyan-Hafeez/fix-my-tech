@@ -2,41 +2,37 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>TechCure</title>
   <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
 </head>
 <body>
-  <div id="splash-screen">
-    <h1 class="logo">TechCure</h1>
-  </div>
-
   <div class="chat-wrapper">
-    <div class="top-bar">
-      <div class="language-select">
-        🌐 Language:
-        <select id="language-select">
-          <option value="en">English</option>
-        </select>
-      </div>
+    <div id="language-select">
+      🌐 <span>Language:</span>
+      <select>
+        <option>English</option>
+        <!-- Add more languages here -->
+      </select>
     </div>
 
-    <h1 class="title">TechCure</h1>
-    <p class="subtitle">Describe your tech issue below and get instant AI help.</p>
+    <h1>TechCure</h1>
+    <p>Describe your tech issue below and get instant AI help.</p>
 
-    <div id="chat-box" class="chat-box"></div>
+    <div id="chat-box"></div>
 
-    <div class="input-area">
-      <input type="text" id="question" placeholder="E.g. My laptop won't turn on" />
+    <div class="input-wrapper">
+      <input id="question" type="text" placeholder="E.g. My laptop won't turn on" />
       <button id="sendBtn">Send</button>
     </div>
 
-    <div class="icons">
-      <label for="file-upload" class="icon-button">📎</label>
-      <input type="file" id="file-upload" style="display: none" />
-      <button class="icon-button">🎤</button>
+    <div class="button-row">
+      <label for="file-upload" id="file-upload-icon">📎</label>
+      <input type="file" id="file-upload" />
+      <span id="mic-icon">🎤</span>
     </div>
   </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
