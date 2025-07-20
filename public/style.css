@@ -1,3 +1,4 @@
+/* Background */
 body {
   margin: 0;
   padding: 0;
@@ -11,30 +12,7 @@ body {
   overflow: hidden;
 }
 
-/* Splash Screen */
-#splash-screen {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at center, #041727, #010c17);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: #00bfff;
-  font-size: 2rem;
-  z-index: 999;
-  transition: opacity 1s ease;
-}
-
-#splash-screen.fade-out {
-  opacity: 0;
-  pointer-events: none;
-}
-
-/* Chat UI */
+/* Chat Container */
 .chat-wrapper {
   width: 90%;
   max-width: 500px;
@@ -57,15 +35,6 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
-}
-
-#language-select select {
-  background: transparent;
-  border: none;
-  color: #78dfff;
-  font-size: 1rem;
-  outline: none;
-  cursor: pointer;
 }
 
 /* Title */
@@ -160,11 +129,4 @@ input[type="file"] {
 #file-upload-icon:hover,
 #mic-icon:hover {
   transform: scale(1.1);
-}
-
-.button-row {
-  display: flex;
-  justify-content: flex-start;
-  gap: 20px;
-  padding-left: 5px;
 }

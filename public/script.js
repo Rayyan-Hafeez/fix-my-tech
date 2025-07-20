@@ -45,16 +45,14 @@ function addMessage(sender, text) {
   chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-// Splash screen fade-out
 window.addEventListener("load", () => {
   setTimeout(() => {
     const splash = document.getElementById("splash-screen");
     splash.classList.add("fade-out");
-
     setTimeout(() => {
       splash.style.display = "none";
       document.querySelector(".chat-wrapper").style.display = "block";
-      document.getElementById("language-select").style.display = "flex";
+      document.getElementById("language-select").style.display = "block";
     }, 1000);
   }, 3000);
 });
