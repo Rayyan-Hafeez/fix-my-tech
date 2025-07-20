@@ -3,38 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TechCure – AI Tech Support</title>
+  <title>TechCure</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div id="splash-screen" class="splash-screen">
-    <h1>TechCure</h1>
-    <p>Speed. Precision. Peace of Mind.</p>
-  </div>
-
-  <div id="language-select" style="display: none;">
-    🌐 Language:
-    <select id="language">
-      <option value="en" selected>English</option>
-      <option value="ur">Urdu</option>
-      <option value="hi">Hindi</option>
-    </select>
+  <div id="splash-screen">
+    <img src="splash.png" alt="Splash" />
   </div>
 
   <div class="chat-wrapper" style="display: none;">
-    <h1>TechCure</h1>
-    <p>Describe your tech issue below and get instant AI help.</p>
-
-    <div id="chat-box" class="chat-box">
-      <!-- Messages will appear here -->
+    <div class="language-select">
+      🌐 Language:
+      <select id="language-select">
+        <option>English</option>
+        <option>Urdu</option>
+        <option>Arabic</option>
+      </select>
     </div>
 
-    <div class="input-bar">
-      <input id="question" type="text" placeholder="E.g. My laptop won't turn on" />
+    <h1 class="title">TechCure</h1>
+    <p class="subtitle">Describe your tech issue below and get instant AI help.</p>
+
+    <div id="chat-box" class="chat-box"></div>
+
+    <div class="input-area">
+      <input type="text" id="question" placeholder="E.g. My laptop won't turn on" />
       <button id="sendBtn">Send</button>
-      <label for="file-upload" class="icon-btn">📎</label>
-      <input id="file-upload" type="file" style="display:none;" />
-      <button class="icon-btn" id="micBtn">🎤</button>
+      <label for="file-upload" class="icon-button">📎</label>
+      <input type="file" id="file-upload" style="display: none;" />
+      <button id="micBtn" class="icon-button">🎤</button>
     </div>
   </div>
 
