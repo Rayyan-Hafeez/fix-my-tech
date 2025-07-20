@@ -5,20 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TechCure</title>
   <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
 </head>
 <body>
   <div id="splash-screen">
-    <img src="splash.png" alt="Splash" />
+    <h1 class="logo">TechCure</h1>
   </div>
 
-  <div class="chat-wrapper" style="display: none;">
-    <div class="language-select">
-      🌐 Language:
-      <select id="language-select">
-        <option>English</option>
-        <option>Urdu</option>
-        <option>Arabic</option>
-      </select>
+  <div class="chat-wrapper">
+    <div class="top-bar">
+      <div class="language-select">
+        🌐 Language:
+        <select id="language-select">
+          <option value="en">English</option>
+        </select>
+      </div>
     </div>
 
     <h1 class="title">TechCure</h1>
@@ -29,12 +30,13 @@
     <div class="input-area">
       <input type="text" id="question" placeholder="E.g. My laptop won't turn on" />
       <button id="sendBtn">Send</button>
+    </div>
+
+    <div class="icons">
       <label for="file-upload" class="icon-button">📎</label>
-      <input type="file" id="file-upload" style="display: none;" />
-      <button id="micBtn" class="icon-button">🎤</button>
+      <input type="file" id="file-upload" style="display: none" />
+      <button class="icon-button">🎤</button>
     </div>
   </div>
-
-  <script src="script.js"></script>
 </body>
 </html>
