@@ -2,6 +2,7 @@ import OpenAI from "openai";
 import { IncomingForm } from "formidable";
 import fs from "fs";
 
+// Disable Vercel's default body parser
 export const config = {
   api: {
     bodyParser: false,
@@ -27,27 +28,40 @@ export default async function handler(req, res) {
       return;
     }
 
-    const history = JSON.parse(fields.history || "[]");
+    const question = fields.question || "";
+    let history = [];
 
-    let attachments = [];
-    if (files.image) {
-      const fileData = fs.readFileSync(files.image[0].filepath);
-      const base64Image = fileData.toString("base64");
-      attachments.push({
-        type: "image_url",
-        image_url: {
-          url: `data:${files.image[0].mimetype};base64,${base64Image}`,
-        },
+    try {
+      history = JSON.parse(fields.history || "[]");
+    } catch (parseErr) {
+      console.warn("History parsing failed, starting fresh.");
+      history = [];
+    }
+
+    // Add the question to history as user input
+    if (question) {
+      history.push({
+        role: "user",
+        content: question,
       });
     }
 
-    if (attachments.length > 0) {
-      // Add image attachment as last user message if image uploaded
+    // Handle image if uploaded
+    if (files.image && files.image[0]) {
+      const fileData = fs.readFileSync(files.image[0].filepath);
+      const base64Image = fileData.toString("base64");
+      const mimetype = files.image[0].mimetype;
+
       history.push({
         role: "user",
         content: [
-          { type: "text", text: history[history.length - 1]?.content || "Analyze this image." },
-          ...attachments,
+          { type: "text", text: question || "Analyze this image." },
+          {
+            type: "image_url",
+            image_url: {
+              url: `data:${mimetype};base64,${base64Image}`,
+            },
+          },
         ],
       });
     }
@@ -58,7 +72,8 @@ export default async function handler(req, res) {
         messages: history,
       });
 
-      res.status(200).json({ answer: completion.choices[0].message.content });
+      const reply = completion.choices?.[0]?.message?.content || "No response.";
+      res.status(200).json({ answer: reply });
     } catch (error) {
       console.error("OpenAI API error:", error);
       res.status(500).json({ error: "OpenAI API error" });
