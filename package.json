@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "dependencies": {
+    "dotenv": "^17.2.1",
     "formidable": "^3.5.4",
     "openai": "^4.0.0"
   }
