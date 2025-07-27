@@ -6,6 +6,5 @@
   "routes": [
     { "src": "/api/(.*)", "dest": "/api/ask.js" },
     { "src": "/(.*)", "dest": "/index.html" }
-  ],
-  "static": true
+  ]
 }
