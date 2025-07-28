@@ -28,18 +28,16 @@
 
     <div id="chat-box"></div>
 
-    <div class="input-area">
+    <!-- Final unified row: input + send + attach + mic -->
+    <div class="input-row">
       <input id="question" type="text" placeholder="E.g. My laptop won't turn on" />
       <button id="sendBtn">Send</button>
-    </div>
-
-    <div class="icon-buttons">
       <label for="file-upload" id="file-upload-icon">📎</label>
       <input type="file" id="file-upload" />
       <span id="mic-icon">🎤</span>
     </div>
 
-    <!-- Hidden but required for script.js -->
+    <!-- Required for script.js -->
     <span id="file-name" style="display: none;">No image attached</span>
   </div>
 
