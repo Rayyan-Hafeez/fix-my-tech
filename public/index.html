@@ -8,36 +8,39 @@
 </head>
 <body>
 
+  <!-- Top-right language select -->
+  <div id="language-select">
+    🌐 <span>Language:</span>
+    <select>
+      <option>English</option>
+    </select>
+  </div>
+
+  <!-- Splash screen -->
   <div id="splash-screen">
     <h1>TechCure</h1>
   </div>
 
+  <!-- Main chat UI -->
   <div class="chat-wrapper">
-    <div id="language-select">
-      🌐 <span>Language:</span>
-      <select>
-        <option>English</option>
-      </select>
-    </div>
-
     <h1>TechCure</h1>
     <p>Describe your tech issue below and get instant AI help.</p>
 
     <div id="chat-box"></div>
 
-    <div class="input-wrapper">
+    <div class="input-area">
       <input id="question" type="text" placeholder="E.g. My laptop won't turn on" />
       <button id="sendBtn">Send</button>
     </div>
 
-    <div class="button-row">
+    <div class="icon-buttons">
       <label for="file-upload" id="file-upload-icon">📎</label>
       <input type="file" id="file-upload" />
       <span id="mic-icon">🎤</span>
     </div>
 
-    <!-- Hidden fields just for script.js compatibility -->
-    <span id="file-name" style="display:none;">No image attached</span>
+    <!-- Hidden but required for script.js -->
+    <span id="file-name" style="display: none;">No image attached</span>
   </div>
 
   <script src="script.js"></script>
