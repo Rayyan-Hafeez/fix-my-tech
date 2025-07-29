@@ -8,32 +8,28 @@
 </head>
 <body>
 
-  <!-- Main card -->
-  <div class="chat-card">
+  <!-- Top Language Selector -->
+  <div id="language-select">
+    🌐 <strong>Language:</strong> English
+  </div>
 
-    <!-- Language selector -->
-    <div class="language-bar">
-      🌐 <span class="lang-label">Language:</span>
-      <span class="lang-value">English</span>
-    </div>
+  <!-- Main Card -->
+  <div class="chat-wrapper">
+    <h1>TechCure</h1>
+    <p>Describe your tech issue below and get instant AI help.</p>
 
-    <!-- Title + description -->
-    <h1 class="site-title">TechCure</h1>
-    <p class="site-subtitle">Describe your tech issue below and get instant AI help.</p>
-
-    <!-- Input area -->
+    <!-- Input Area -->
     <div class="input-area">
       <input id="question" type="text" placeholder="E.g. My laptop won't turn on" />
       <button id="sendBtn">Send</button>
     </div>
 
     <!-- Icons -->
-    <div class="icon-row">
+    <div class="icon-buttons">
       <label for="file-upload" id="file-upload-icon">📎</label>
       <input type="file" id="file-upload" />
       <span id="mic-icon">🎤</span>
     </div>
-
   </div>
 
 </body>
