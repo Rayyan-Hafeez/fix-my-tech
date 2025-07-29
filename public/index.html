@@ -1,29 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechCure</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TechCure</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="container">
-        <div class="card">
-            <p class="language"><i class="fas fa-globe"></i> Language: <strong>English</strong></p>
-            <h1>TechCure</h1>
-            <p class="subtitle">Describe your tech issue below and get instant AI help.</p>
 
-            <div class="input-area">
-                <input type="text" placeholder="E.g. My laptop won't turn on">
-                <button class="send-btn">Send</button>
-            </div>
+  <div id="splash-screen">
+    <h1>TechCure</h1>
+  </div>
 
-            <div class="icon-buttons">
-                <button class="icon-btn"><i class="fas fa-paperclip"></i></button>
-                <button class="icon-btn"><i class="fas fa-microphone"></i></button>
-            </div>
-        </div>
+  <div class="chat-wrapper">
+    <div id="language-select">
+      🌐 <span>Language:</span>
+      <select>
+        <option>English</option>
+      </select>
     </div>
+
+    <h1>TechCure</h1>
+    <p>Describe your tech issue below and get instant AI help.</p>
+
+    <div id="chat-box"></div>
+
+    <div class="input-wrapper">
+      <input id="question" type="text" placeholder="E.g. My laptop won't turn on" />
+      <button id="sendBtn">Send</button>
+    </div>
+
+    <div class="button-row">
+      <label for="file-upload" id="file-upload-icon">📎</label>
+      <input type="file" id="file-upload" />
+      <span id="mic-icon">🎤</span>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
