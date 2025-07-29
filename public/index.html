@@ -5,23 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TechCure</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
     <div class="container">
-        <div class="chat-wrapper">
-            <p class="lang"><i class="fa-solid fa-globe"></i> <span>Language:</span> English</p>
-            <h1 class="title">TechCure</h1>
+        <div class="card">
+            <p class="language"><span>🌐</span> Language: <strong>English</strong></p>
+            <h1>TechCure</h1>
             <p class="subtitle">Describe your tech issue below and get instant AI help.</p>
 
-            <div class="input-container">
-                <input type="text" id="question" placeholder="E.g. My laptop won't turn on">
-                <button id="sendBtn">Send</button>
+            <div class="input-area">
+                <input type="text" placeholder="E.g. My laptop won't turn on">
+                <button class="send-btn">Send</button>
             </div>
 
-            <div class="icon-row">
-                <div class="icon-btn"><i class="fa-solid fa-paperclip"></i></div>
-                <div class="icon-btn"><i class="fa-solid fa-microphone"></i></div>
+            <div class="icon-buttons">
+                <button class="icon-btn">📎</button>
+                <button class="icon-btn">🎤</button>
             </div>
         </div>
     </div>
