@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TechCure</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Top Language Selector -->
+  <!-- Language Selector -->
   <div id="language-select">
-    🌐 <strong>Language:</strong> English
+    🌐 <span>Language:</span> <strong>English</strong>
   </div>
 
   <!-- Main Card -->
@@ -18,19 +18,18 @@
     <h1>TechCure</h1>
     <p>Describe your tech issue below and get instant AI help.</p>
 
-    <!-- Input Area -->
     <div class="input-area">
-      <input id="question" type="text" placeholder="E.g. My laptop won't turn on" />
+      <input id="question" type="text" placeholder="E.g. My laptop won't turn on">
       <button id="sendBtn">Send</button>
     </div>
 
-    <!-- Icons -->
     <div class="icon-buttons">
-      <label for="file-upload" id="file-upload-icon">📎</label>
-      <input type="file" id="file-upload" />
-      <span id="mic-icon">🎤</span>
+      <label for="file-upload" class="icon-btn">📎</label>
+      <input type="file" id="file-upload">
+      <span class="icon-btn">🎤</span>
     </div>
   </div>
 
+  <script src="script.js"></script>
 </body>
 </html>
