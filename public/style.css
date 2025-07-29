@@ -1,4 +1,4 @@
-/* Page background */
+/* Background */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -10,27 +10,26 @@ body {
     color: white;
 }
 
-/* Container */
+/* Wrapper */
 .container {
     text-align: center;
 }
 
-/* Card wrapper */
+/* Chat Card */
 .chat-wrapper {
     background: rgba(0, 14, 32, 0.9);
-    padding: 2.2rem;
-    border-radius: 22px;
-    box-shadow: 0 0 40px rgba(0, 204, 255, 0.4);
-    backdrop-filter: blur(18px);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(0, 204, 255, 0.35);
     width: 90%;
-    max-width: 480px;
+    max-width: 460px;
     border: 1px solid rgba(0, 204, 255, 0.15);
 }
 
 /* Language text */
 .lang {
     font-size: 0.9rem;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     color: #00ccff;
 }
 
@@ -45,77 +44,71 @@ body {
 /* Subtitle */
 .subtitle {
     font-size: 0.95rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.3rem;
 }
 
-/* Input + Button container */
+/* Input Container */
 .input-container {
     display: flex;
-    gap: 10px;
     justify-content: center;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.45);
+    border-radius: 50px;
+    overflow: hidden;
+    box-shadow: inset 0 0 6px rgba(0, 204, 255, 0.3);
 }
 
-/* Input field */
+/* Input Field */
 #question {
     flex: 1;
     padding: 0.85rem 1.2rem;
-    border-radius: 50px;
     border: none;
-    background: rgba(0, 0, 0, 0.45);
+    background: transparent;
     color: white;
     font-size: 0.95rem;
     outline: none;
-    box-shadow: inset 0 0 8px rgba(0, 204, 255, 0.3),
-                0 0 4px rgba(255, 255, 255, 0.05);
 }
 
-/* Send Button (Circular + Glow) */
+/* Send Button — pill shaped */
 #sendBtn {
     background: linear-gradient(145deg, #00e6ff, #00b8e6);
     border: none;
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
+    padding: 0 1.5rem;
     color: #000;
     font-weight: bold;
     cursor: pointer;
     font-size: 0.95rem;
-    box-shadow: 0 0 20px #00ccff,
-                0 0 40px rgba(0, 204, 255, 0.8);
+    border-radius: 50px;
     transition: all 0.25s ease-in-out;
 }
 
 #sendBtn:hover {
     background: linear-gradient(145deg, #00d0ff, #00a8cc);
-    box-shadow: 0 0 25px #00ccff,
-                0 0 50px rgba(0, 204, 255, 1);
 }
 
-/* Icon row */
+/* Icons Row */
 .icon-row {
-    margin-top: 1.2rem;
+    margin-top: 1rem;
     display: flex;
-    gap: 15px;
+    gap: 12px;
     justify-content: center;
 }
 
-/* Icon buttons */
+/* Icon buttons smaller, softer glow */
 .icon-btn {
     cursor: pointer;
-    font-size: 1.2rem;
-    background: rgba(0, 204, 255, 0.2);
+    font-size: 1rem;
+    background: rgba(0, 204, 255, 0.15);
     border-radius: 50%;
-    padding: 0.7rem;
-    width: 46px;
-    height: 46px;
+    padding: 0.55rem;
+    width: 40px;
+    height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 0 12px rgba(0, 204, 255, 0.5);
     transition: 0.25s;
 }
 
 .icon-btn:hover {
-    background: rgba(0, 204, 255, 0.3);
-    box-shadow: 0 0 20px rgba(0, 204, 255, 0.7);
+    background: rgba(0, 204, 255, 0.25);
 }
