@@ -1,109 +1,121 @@
-/* Base Layout */
+/* Page background */
 body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: radial-gradient(circle at center, #071f3f, #010e1a);
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: radial-gradient(circle at top, #00182e, #000c18);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
 }
 
-/* Language Selector */
-#language-select {
-  position: absolute;
-  top: 1.2rem;
-  color: #00ccff;
-  font-size: 0.95rem;
-  font-weight: 500;
+/* Container */
+.container {
+    text-align: center;
 }
 
-/* Card Wrapper */
+/* Card wrapper */
 .chat-wrapper {
-  background: rgba(0, 14, 32, 0.85);
-  padding: 2.2rem;
-  border-radius: 22px;
-  box-shadow: 0 0 25px rgba(0, 204, 255, 0.3);
-  backdrop-filter: blur(15px);
-  text-align: center;
-  width: 90%;
-  max-width: 480px;
-  border: 1px solid rgba(0, 204, 255, 0.1);
+    background: rgba(0, 14, 32, 0.9);
+    padding: 2.2rem;
+    border-radius: 22px;
+    box-shadow: 0 0 40px rgba(0, 204, 255, 0.4);
+    backdrop-filter: blur(18px);
+    width: 90%;
+    max-width: 480px;
+    border: 1px solid rgba(0, 204, 255, 0.15);
 }
 
-/* Headings */
-.chat-wrapper h1 {
-  color: #00ccff;
-  margin-bottom: 0.4rem;
+/* Language text */
+.lang {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    color: #00ccff;
 }
 
-.chat-wrapper p {
-  color: #ddd;
-  margin-bottom: 1.5rem;
+/* Title */
+.title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #00ccff;
+    margin: 0;
 }
 
-/* Input Area */
-.input-area {
-  display: flex;
-  gap: 0.6rem;
-  margin-bottom: 1.2rem;
+/* Subtitle */
+.subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
 }
 
+/* Input + Button container */
+.input-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* Input field */
 #question {
-  flex: 1;
-  padding: 0.8rem 1rem;
-  border-radius: 50px;
-  border: none;
-  background: rgba(0, 0, 0, 0.4);
-  color: white;
-  font-size: 0.95rem;
-  outline: none;
-  box-shadow: inset 0 0 6px rgba(0, 204, 255, 0.2);
+    flex: 1;
+    padding: 0.85rem 1.2rem;
+    border-radius: 50px;
+    border: none;
+    background: rgba(0, 0, 0, 0.45);
+    color: white;
+    font-size: 0.95rem;
+    outline: none;
+    box-shadow: inset 0 0 8px rgba(0, 204, 255, 0.3),
+                0 0 4px rgba(255, 255, 255, 0.05);
 }
 
-/* Send Button */
+/* Send Button (Circular + Glow) */
 #sendBtn {
-  background: #00ccff;
-  border: none;
-  padding: 0.75rem 1.4rem;
-  border-radius: 50px;
-  color: #000;
-  font-weight: bold;
-  cursor: pointer;
-  font-size: 0.95rem;
-  box-shadow: 0 0 15px #00ccff, inset 0 0 5px rgba(255,255,255,0.5);
-  transition: all 0.25s ease-in-out;
+    background: linear-gradient(145deg, #00e6ff, #00b8e6);
+    border: none;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 0.95rem;
+    box-shadow: 0 0 20px #00ccff,
+                0 0 40px rgba(0, 204, 255, 0.8);
+    transition: all 0.25s ease-in-out;
 }
 
 #sendBtn:hover {
-  background: #00b3e6;
-  box-shadow: 0 0 20px #00ccff, inset 0 0 7px rgba(255,255,255,0.5);
+    background: linear-gradient(145deg, #00d0ff, #00a8cc);
+    box-shadow: 0 0 25px #00ccff,
+                0 0 50px rgba(0, 204, 255, 1);
 }
 
-/* Icon Buttons */
-.icon-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 0.8rem;
+/* Icon row */
+.icon-row {
+    margin-top: 1.2rem;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
 }
 
+/* Icon buttons */
 .icon-btn {
-  cursor: pointer;
-  font-size: 1.2rem;
-  background: rgba(0, 204, 255, 0.15);
-  border-radius: 50%;
-  padding: 0.6rem;
-  box-shadow: 0 0 8px rgba(0, 204, 255, 0.4);
-  transition: 0.25s;
+    cursor: pointer;
+    font-size: 1.2rem;
+    background: rgba(0, 204, 255, 0.2);
+    border-radius: 50%;
+    padding: 0.7rem;
+    width: 46px;
+    height: 46px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 12px rgba(0, 204, 255, 0.5);
+    transition: 0.25s;
 }
 
 .icon-btn:hover {
-  background: rgba(0, 204, 255, 0.25);
-  box-shadow: 0 0 15px rgba(0, 204, 255, 0.6);
-}
-
-/* Hide File Input */
-#file-upload {
-  display: none;
+    background: rgba(0, 204, 255, 0.3);
+    box-shadow: 0 0 20px rgba(0, 204, 255, 0.7);
 }
